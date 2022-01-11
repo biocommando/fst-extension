@@ -64,6 +64,11 @@ public:
         FST_DEBUG_LOG("AudioEffectX", "flags changed " << flags);
     }
 
+    void setParameterAutomated(int idx, float value)
+    {
+        setParameter(idx, value);
+    }
+
     std::string getEffectName()
     {
         FST_WRAP_CSTR_FN(buf, getEffectName(buf));

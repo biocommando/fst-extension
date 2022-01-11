@@ -59,6 +59,12 @@ public:
         *data = VOID_CAST(chunk.data());
         return chunk.size();
     }
+
+    std::string setParameterCapture;
+    void setParameter(int index, float value)
+    {
+        setParameterCapture = std::to_string(index) + ',' + std::to_string(value);
+    }
 };
 
 TEST(TestAudioeffectx_AudioEffectX_compatibilityExtensionsHostSide)
@@ -113,6 +119,9 @@ TEST(TestAudioeffectx_AudioEffectX_compatibilityExtensionsPluginSide)
     auto retInfo = aefx.getTimeInfo(123);
     EXPECT(NEAR(retInfo->tempo, 120.005, 1e-6));
     EXPECT(masterDispatcherCapture[0] == "7,0,123,0,0");
+
+    aefx.setParameterAutomated(0, 1.23);
+    EXPECT(aefx.setParameterCapture == "0,1.230000");
 }
 
 TEST(TestAudioeffectx_float2string)
