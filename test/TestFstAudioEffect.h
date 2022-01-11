@@ -306,6 +306,12 @@ public:
     {
         lastCalled = "draw;" + std::string(pRect == nullptr ? "NULL" : "NOT NULL");
     }
+
+    bool isDirty = false;
+    bool getFrameDirtyStatus()
+    {
+        return isDirty;
+    }
 };
 
 TEST(FstAudioEffect_gui)
@@ -327,7 +333,10 @@ TEST(FstAudioEffect_gui)
     aeff->dispatcher(aeff, effEditClose, 0, 0, erect, 0);
     EXPECT(gui.lastCalled == "close");
 
-    aeff->dispatcher(aeff, effEditDraw, 0, 0, nullptr, 0);
+    aeff->dispatcher(aeff, 19, 0, 0, nullptr, 0);
+    EXPECT(gui.lastCalled == "close");
+    gui.isDirty = true;
+    aeff->dispatcher(aeff, 19, 0, 0, nullptr, 0);
     EXPECT(gui.lastCalled == "draw;NULL");
 }
 
