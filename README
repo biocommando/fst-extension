@@ -1,0 +1,13 @@
+This is a repository that extends FST to classes that can be used as a basis for building
+VST compatible FST plugins. This repo contains a compatibility wrapper for plugins written
+for VST2 SDK and a modified version of VST GUI 3.6 SDK that can be used for creating FST
+plugins with GUI.
+
+My purpose of creating this repository was to create a free compatibility wrapper for my own
+VST2 compatible plugins. Hence, the supported feature set may be limited if some features have
+not been needed in my own plugins.
+
+The code in this repository is licensed with GPL-3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
+unless otherwise stated in the source code file.
+
+When cloning this repository remember to use the `--recurse-submodules` parameter.

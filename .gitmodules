@@ -1,0 +1,3 @@
+[submodule "FST-master"]
+	path = FST-master
+	url = https://git.iem.at/zmoelnig/FST.git
