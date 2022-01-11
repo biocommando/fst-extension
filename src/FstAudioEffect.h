@@ -192,7 +192,7 @@ public:
 
     virtual void notifyDraw()
     {
-        if (editor && editorDirty)
+        if (editor && (editorDirty || editor->getFrameDirtyStatus()))
         {
             editor->draw(nullptr);
             editorDirty = false;

@@ -12,5 +12,6 @@ public:
     virtual void close() {}
     virtual bool getRect(ERect **ppRect) { return false; }
     virtual void draw(ERect *pRect) {}
+    virtual bool getFrameDirtyStatus() { return false; }
     virtual ~GuiBase() {}
 };

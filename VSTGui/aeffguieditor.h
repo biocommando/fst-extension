@@ -108,6 +108,11 @@ public :
 	virtual void endEdit (long index)   { ((AudioEffectX*)effect)->endEdit (index); }
 #endif
 
+	bool getFrameDirtyStatus()
+	{
+		return frame != nullptr && frame->isDirty();
+	}
+
 //---------------------------------------
 protected:
 	ERect   rect;
