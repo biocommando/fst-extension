@@ -79,7 +79,11 @@ static inline t_fstPtrInt fst_dispatcher(AEffect *eff, t_fstInt32 opcode, int in
     case effEditClose:
         aeff->setGuiWindow(nullptr);
         return 0;
-    case effEditDraw:
+    /*
+        FLStudio calls this every time after a control is edited with some interval
+        so let's use this for notifying redraw to GUI.
+    */
+    case 19:
         aeff->notifyDraw();
         return 0;
     /*case effGetChunk:
@@ -112,7 +116,7 @@ static inline t_fstPtrInt fst_dispatcher(AEffect *eff, t_fstInt32 opcode, int in
     case effCanDo:
         do
         {
-            //printf("canDo '%s'?\n", (char *)ptr);
+            // printf("canDo '%s'?\n", (char *)ptr);
             if (!strcmp((char *)ptr, "receiveVstEvents"))
                 return 1;
             if (!strcmp((char *)ptr, "receiveVstMidiEvents"))

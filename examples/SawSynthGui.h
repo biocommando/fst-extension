@@ -112,7 +112,7 @@ public:
 
         auto knob = (CKnob *)control;
         auto value = knob->getValue();
-        fstEffect->setParameterAutomated(tag, value);
+        fstEffect->setParameter(tag, value);
         setParameter(tag, value);
     }
 

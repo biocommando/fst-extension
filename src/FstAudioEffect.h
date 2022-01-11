@@ -47,7 +47,6 @@ protected:
     ERect guiBounds = {0, 0, 600, 600};
     void *guiWindow = nullptr;
     GuiBase *editor = nullptr;
-    bool editorDirty = true;
 
     void openGui()
     {
@@ -183,19 +182,11 @@ public:
         // hasEditor(); // It's too late to tell it here
     }
 
-    virtual void setParameterAutomated(int index, float value)
-    {
-        FST_DEBUG_LOG("FstAudioEffect", "setParameterAutomated idx=" << index << ", val=" << value);
-        setParameter(index, value);
-        editorDirty = true;
-    }
-
     virtual void notifyDraw()
     {
-        if (editor && (editorDirty || editor->getFrameDirtyStatus()))
+        if (editor && editor->getFrameDirtyStatus())
         {
             editor->draw(nullptr);
-            editorDirty = false;
         }
     }
 
